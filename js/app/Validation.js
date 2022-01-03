@@ -1,0 +1,133 @@
+function Validation() {
+     /* Hàm rut gọn document.getElementById*/
+     function getELE(id) {
+          return document.getElementById(id);
+     }
+
+     // Kiểm tra rổng mà Khoảng trắng
+     this.checkEmpty = function (value, spanID, message) {
+          if (value.trim() != "") {
+               // Nếu hợp lệ
+               getELE(spanID).innerHTML = "";
+               getELE(spanID).style.display = "none";
+               return true;
+          }
+          // Không hợp lệ
+          getELE(spanID).innerHTML = message;
+          getELE(spanID).style.display = "block";
+          return false;
+     }
+     // Kiểm tra ID trùng
+     this.checkID = function (value, spanID, message, mangNV) {
+
+          var isExist = false;
+          isExist = mangNV.some(function (nv) {
+              return nv.taiKhoan == value;
+          });
+  
+          if (isExist) {
+               //mã bị trùng
+               getELE(spanID).innerHTML = message;
+          getELE(spanID).style.display = "block";
+          return false;
+          }
+          
+               //nếu hợp lệ
+               getELE(spanID).innerHTML = "";
+               getELE(spanID).style.display = "none";
+               return true;
+      }
+
+     // Kiểm tra Name
+     this.checkName = function (value, spanID, message) {
+          var patternString = "^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ"
+               + "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ"
+               + "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$";
+
+          var pattern = new RegExp(patternString);
+          if (pattern.test(value)) {
+               //đúng định dạng
+               getELE(spanID).innerHTML = "";
+               getELE(spanID).style.display = "none";
+               return true;
+          }
+          // Không hợp lệ
+          getELE(spanID).innerHTML = message;
+          getELE(spanID).style.display = "block";
+          return false;
+     }
+
+     this.checkEmail = function (value, spanID, message) {
+          var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+          if (value.match(pattern)) {
+               //đúng định dạng
+               getELE(spanID).innerHTML = "";
+               getELE(spanID).style.display = "none";
+               return true;
+          }
+               // Không hợp lệ
+               getELE(spanID).innerHTML = message;
+               getELE(spanID).style.display = "block";
+               return false;
+     }
+
+     this.checkPass = function (value, spanID, message) {
+          var pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,10}$/;
+
+          if (value.match(pattern)) {
+               //đúng định dạng
+               getELE(spanID).innerHTML = "";
+               getELE(spanID).style.display = "none";
+               return true;
+          }
+               // Không hợp lệ
+               getELE(spanID).innerHTML = message;
+               getELE(spanID).style.display = "block";
+               return false;
+     }
+
+     this.checkLuong = function (value, spanID, message) {
+          var pattern = /^(\d{1,20}(\.\d{1,20})?)$/;
+          if (value.match(pattern) && value >= 1000000) {
+               //đúng định dạng
+               getELE(spanID).innerHTML = "";
+               getELE(spanID).style.display = "none";
+               return true;
+          }
+               // Không hợp lệ
+               getELE(spanID).innerHTML = message;
+               getELE(spanID).style.display = "block";
+               return false;
+     }
+
+     this.checkSelect = function (selectID, spanID, message) {
+          if (document.getElementById(selectID).selectedIndex != 0) {
+              //hợp lệ
+              document.getElementById(spanID).innerHTML = "";
+              document.getElementById(spanID).style.display = 'none';
+              return true;
+          }
+          //không hợp lệ
+          document.getElementById(spanID).innerHTML = message;
+          document.getElementById(spanID).style.display = 'block';
+          return false;
+  
+     }
+     
+     this.checkGio = function (value, spanID, message) {
+          var pattern = /^(\d{1,9}(\.\d{1,9})?)$/;
+          if (value.match(pattern) && value >= 0) {
+               //đúng định dạng
+               getELE(spanID).innerHTML = "";
+               getELE(spanID).style.display = "none";
+               return true;
+          }
+               // Không hợp lệ
+               getELE(spanID).innerHTML = message;
+               getELE(spanID).style.display = "block";
+               return false;
+     }
+     
+
+}
