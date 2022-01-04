@@ -39,11 +39,11 @@ function ThemNhanVien() {
      isValid &= validation.checkEmpty(matkhau, "tbMatKhau", "Mật khẩu nhân viên không được để trống") && validation.checkPass(matkhau, "tbMatKhau", "Mật khẩu nhân viên chưa đúng định dạng");
      
       // check Lương
-     isValid &= validation.checkEmpty(luongcoban, "tbLuongCB", "Lương nhân viên không được để trống") && validation.checkLuong(luongcoban, "tbLuongCB", "Lương nhân viên không được dưới 1000.000");
+     isValid &= validation.checkEmpty(luongcoban, "tbLuongCB", "Lương nhân viên không được để trống") && validation.checkLuong(luongcoban, "tbLuongCB", "Lương nhân viên từ 1000.000 - 20.000.000");
        // check cv
      isValid &= validation.checkSelect("chucvu","tbChucVu","Chưa chọn chức vụ");
      // check Giờ
-     isValid &= validation.checkGio(giolam,"tbGiolam","Giờ làm nhân viên không được để trống") && validation.checkGio(giolam,"tbGiolam","Giờ làm nhân viên lớn hơn hoặc bằng 0");
+     isValid &= validation.checkEmpty(giolam,"tbGiolam","Giờ làm nhân viên không được để trống") && validation.checkGio(giolam,"tbGiolam","Giờ làm nhân trong tháng 80 - 200 giờ");
 
 
      // Tạo thể hiện 
@@ -156,12 +156,12 @@ function capNhapNhanVien() {
      isValid &= validation.checkEmpty(matkhau, "tbMatKhau", "Mật khẩu nhân viên không được để trống") && validation.checkPass(matkhau, "tbMatKhau", "Mật khẩu nhân viên chưa đúng định dạng");
      
       // check Lương
-     isValid &= validation.checkEmpty(luongcoban, "tbLuongCB", "Lương nhân viên không được để trống") && validation.checkLuong(luongcoban, "tbLuongCB", "Lương nhân viên không được dưới 1000.000");
+     isValid &= validation.checkEmpty(luongcoban, "tbLuongCB", "Lương nhân viên không được để trống") && validation.checkLuong(luongcoban, "tbLuongCB", "Lương nhân viên từ 1000.000 - 20.000.000");
      // check cv
      isValid &= validation.checkSelect("chucvu","tbChucVu","Chưa chọn chức vụ");
      
      // check Giờ
-     isValid &= validation.checkGio(giolam,"tbGiolam","Giờ làm nhân viên không được để trống") && validation.checkGio(giolam,"tbGiolam","Giờ làm nhân viên lớn hơn hoặc bằng 0");
+     isValid &= validation.checkEmpty(giolam,"tbGiolam","Giờ làm nhân viên không được để trống") && validation.checkGio(giolam,"tbGiolam","Giờ làm nhân trong tháng 80 - 200 giờ");
      // Tạo thể hiện 
      if (isValid) {
           var nv = new NhanVien(taiKhoan, hoten, email, matkhau, ngaylam, luongcoban, chucvu, giolam);

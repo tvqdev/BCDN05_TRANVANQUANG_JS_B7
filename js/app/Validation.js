@@ -89,7 +89,7 @@ function Validation() {
 
      this.checkLuong = function (value, spanID, message) {
           var pattern = /^(\d{1,20}(\.\d{1,20})?)$/;
-          if (value.match(pattern) && value >= 1000000) {
+          if (value.match(pattern) && value >= 1000000 && value <= 20000000) {
                //đúng định dạng
                getELE(spanID).innerHTML = "";
                getELE(spanID).style.display = "none";
@@ -117,7 +117,7 @@ function Validation() {
      
      this.checkGio = function (value, spanID, message) {
           var pattern = /^(\d{1,9}(\.\d{1,9})?)$/;
-          if (value.match(pattern) && value >= 0) {
+          if (value.match(pattern) && value >= 80 && value <= 200) {
                //đúng định dạng
                getELE(spanID).innerHTML = "";
                getELE(spanID).style.display = "none";
