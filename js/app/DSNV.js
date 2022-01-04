@@ -63,7 +63,7 @@ function DSNV(params) {
           //Duyệt mảng sv
           this.mangNV.map(function (nv) {
                //chuyển tên sv về chữ thường
-               var nameLower = nv.hoTen.toLowerCase();
+               var nameLower = nv.xepLoai.toLowerCase();
                //Kiểm tra tên sv có chứa từ khoá (keyword) không
                var indexName = nameLower.indexOf(keywordLower);
                if (indexName > -1) {
