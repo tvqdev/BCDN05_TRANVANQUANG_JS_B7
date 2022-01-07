@@ -100,7 +100,19 @@ function Validation() {
                getELE(spanID).style.display = "block";
                return false;
      }
-
+     this.checkDate = function (value, spanID, message) {
+          var pattern = /^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/;
+          if (value.match(pattern)) {
+              //Hợp lệ
+              document.getElementById(spanID).innerHTML = "";
+              document.getElementById(spanID).style.display = "none";
+              return true;
+          }
+          //Không hợp lệ
+          document.getElementById(spanID).innerHTML = message;
+          document.getElementById(spanID).style.display = "block";
+          return false;
+      }
      this.checkSelect = function (selectID, spanID, message) {
           if (document.getElementById(selectID).selectedIndex != 0) {
               //hợp lệ

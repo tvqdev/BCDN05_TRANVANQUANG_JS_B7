@@ -27,7 +27,7 @@ function ThemNhanVien() {
      //console.log(taiKhoan, hoten, email, matkhau, ngaylam, luongcoban, chucvu, giolam);
      var isValid = true;
      // check tài khoản
-     isValid &= validation.checkEmpty(taiKhoan, "tbTKNV", "Mã nhân viên không được để trống") && validation.checkID(taiKhoan,"tbTKNV","Mã snhân viên không được trùng",dsnv.mangNV);
+     isValid &= validation.checkEmpty(taiKhoan, "tbTKNV", "Mã nhân viên không được để trống") && validation.checkID(taiKhoan,"tbTKNV","Mã nhân viên không được trùng",dsnv.mangNV);
      
      // check Name
      isValid &= validation.checkEmpty(hoten, "tbTen", "tên nhân viên không được để trống") && validation.checkName(hoten, "tbTen", "Tên nhân viên không được nhập số");
@@ -37,7 +37,8 @@ function ThemNhanVien() {
      
      // check Pass
      isValid &= validation.checkEmpty(matkhau, "tbMatKhau", "Mật khẩu nhân viên không được để trống") && validation.checkPass(matkhau, "tbMatKhau", "Mật khẩu nhân viên chưa đúng định dạng");
-     
+     // check date
+     isValid &= validation.checkEmpty(ngaylam, "tbNgay", "Hãy nhập ngày làm của bạn") && validation.checkDate(ngaylam, "tbNgay", "Vui lòng nhập đúng theo định dạng dd/mm/yyyy")
       // check Lương
      isValid &= validation.checkEmpty(luongcoban, "tbLuongCB", "Lương nhân viên không được để trống") && validation.checkLuong(luongcoban, "tbLuongCB", "Lương nhân viên từ 1000.000 - 20.000.000");
        // check cv
@@ -56,7 +57,6 @@ function ThemNhanVien() {
 
           HienLenTable(dsnv.mangNV);
           setLocalStorage(dsnv.mangNV);
-
      }
 }
 
@@ -129,7 +129,7 @@ function xemNhanVien(id) {
      }
      setLocalStorage(dsnv.mangNV);
      HienLenTable(dsnv.mangNV);
-     getELE("btnThemNV").disabled = true;
+
 }
 
 
@@ -145,7 +145,7 @@ function capNhapNhanVien() {
 
 
      var isValid = true;
-
+     isValid &= validation.checkEmpty(taiKhoan, "tbTKNV", "Mã nhân viên không được để trống");
      // check Name
      isValid &= validation.checkEmpty(hoten, "tbTen", "tên nhân viên không được để trống") && validation.checkName(hoten, "tbTen", "Tên nhân viên không được nhập số");
      
@@ -154,7 +154,8 @@ function capNhapNhanVien() {
      
      // check Pass
      isValid &= validation.checkEmpty(matkhau, "tbMatKhau", "Mật khẩu nhân viên không được để trống") && validation.checkPass(matkhau, "tbMatKhau", "Mật khẩu nhân viên chưa đúng định dạng");
-     
+     // check date
+     isValid &= validation.checkEmpty(ngaylam, "tbNgay", "Hãy nhập ngày làm của bạn") && validation.checkDate(ngaylam, "tbNgay", "Vui lòng nhập đúng theo định dạng dd/mm/yyyy");
       // check Lương
      isValid &= validation.checkEmpty(luongcoban, "tbLuongCB", "Lương nhân viên không được để trống") && validation.checkLuong(luongcoban, "tbLuongCB", "Lương nhân viên từ 1000.000 - 20.000.000");
      // check cv
@@ -169,7 +170,8 @@ function capNhapNhanVien() {
           nv.xepLoaiNV();
           dsnv.capNhap(nv);
           HienLenTable(dsnv.mangNV);
-          setLocalStorage(dsnv.mangNV)
+          setLocalStorage(dsnv.mangNV);
+
      }
      
      //getELE("btnDong").onclick = resetForm;
@@ -184,3 +186,10 @@ function searchNameNV(){
      HienLenTable(mangTK);
 }
 getELE("searchName").addEventListener("keyup", searchNameNV);
+
+function resetForm() {
+     getELE("formqvnv").reset();
+     getELE("tknv").disabled = false;
+     // getELE("btnThemNV").disabled = false;
+     // getELE("btnCapNhat").disabled = false; 
+}
